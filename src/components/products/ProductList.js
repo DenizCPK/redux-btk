@@ -45,7 +45,7 @@ class ProductList extends Component {
                                 <td>{product.unitsInStock}</td>
                                 <td>
                                     <Button color="success" onClick={() => this.addToCart(product)} >
-                                        Sepete Ekle AMKlololo
+                                        Sepete Ekle AMKlololtestdeneme02
 
                                 </td>
                             </tr>
