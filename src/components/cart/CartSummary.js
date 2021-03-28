@@ -18,7 +18,7 @@ class CartSummary extends Component {
   renderEmpty() {
     return (
       <NavItem>
-        <NavLink>Sepetiniz boş</NavLink>
+        <NavLink>Sepetiniz boş-AMK</NavLink>
       </NavItem>
     );
   }
