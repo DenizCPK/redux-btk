@@ -12,8 +12,8 @@ class CategoryList extends Component {
     }
 
     selectCategory = (category) => {
-        this.props.actions.changeCategory(category);
-        this.props.actions.getProducts(category.id)
+        this.props.action.changeCategory(category);
+        this.props.action.getProducts(category.id)
     }
     render() {
         return (
