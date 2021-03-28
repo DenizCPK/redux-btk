@@ -13,7 +13,7 @@ class ProductList extends Component {
     }
     addToCart = (product) => {
         this.props.actions.addToCart({ quantity: 1, product })
-        alertify.notify(product.productName + "sepete eklendi")
+        alertify.success(product.productName + "sepete eklendi")
     }
     render() {
         return (
@@ -45,8 +45,8 @@ class ProductList extends Component {
                                 <td>{product.unitsInStock}</td>
                                 <td>
                                     <Button color="success" onClick={() => this.addToCart(product)} >
-                                        Sepete Ekle
-
+                                      Ekle
+                                    </Button>
                                 </td>
                             </tr>
                         ))}
