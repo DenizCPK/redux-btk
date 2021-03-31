@@ -23,7 +23,7 @@ const Navi = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Ürün Ekle</NavLink>
+              <NavLink href="/components/">Ürün EkleD1</NavLink>
             </NavItem>
             <CartSummary/>
           </Nav>
