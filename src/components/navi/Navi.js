@@ -18,7 +18,7 @@ const Navi = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand>NorthWind</NavbarBrand>
+        <NavbarBrand href="/">NorthWind</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
