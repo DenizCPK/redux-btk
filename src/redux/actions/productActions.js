@@ -36,18 +36,19 @@ export function saveProduct(product) {
   };
 }
 
-export async function handleResponse(response){
-    if(response.ok){
-        return response.json()
-    }
+export async function handleResponse(response) {
+  if (response.ok) {
+    return response.json();
+  }
 
-    const error = await response.text()
-    throw new Error(error)
+  const error = await response.text();
+  throw new Error(error);
 }
 
-export function handleError(error)
-    console.error("Bir Hata var Anam!")
-    throw error
+export function handleError(error) {
+  console.error("Bir Hata var Anam!");
+  throw error;
+}
 
 export function getProducts(categoryId) {
   return function (dispatch) {
