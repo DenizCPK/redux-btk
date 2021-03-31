@@ -5,20 +5,24 @@ import {
   DropdownMenu,
   DropdownItem,
   NavItem,
-  NavLink
+  NavLink,
+  Badge
 } from "reactstrap";
 import { connect } from "react-redux";
 import alertify from "alertifyjs";
+import { bindActionCreators } from "redux";
+import * as cartActions from "../../redux/actions/cartActions";
+import {Link} from "react-router-dom"
 
 class CartSummary extends Component {
   removeFromCart(product) {
     this.props.actions.removeFromCart(product);
-    alertify.error(product.productName + " sepetten silindi");
+    alertify.error(product.productName + " Sepetten Silindi");
   }
   renderEmpty() {
     return (
       <NavItem>
-        <NavLink>Sepetiniz boş-AMK45</NavLink>
+        <NavLink>Sepetiniz Boş</NavLink>
       </NavItem>
     );
   }
@@ -29,10 +33,16 @@ class CartSummary extends Component {
           Sepetiniz
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>OPT1</DropdownItem>
-          <DropdownItem>OPT2</DropdownItem>
+          {
+            this.props.cart.map(cartItem => (
+              <DropdownItem key={cartItem.product.id}>
+                <Badge color="danger" onClick={()=>this.removeFromCart(cartItem.product)}>-</Badge>
+                {cartItem.product.productName}
+                <Badge color="success">{cartItem.quantity}</Badge>
+              </DropdownItem>
+            ))}
           <DropdownItem divider />
-          <DropdownItem>Sepete git</DropdownItem>
+          <DropdownItem><Link to={"/cart"}>Sepete Git</Link></DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     );
@@ -45,10 +55,16 @@ class CartSummary extends Component {
     );
   }
 }
-
+function mapDispatchToProps(dispatch){
+  return{
+    actions:{
+      removeFromCart:bindActionCreators(cartActions.removeFromCart, dispatch)
+    }
+  }
+}
 function mapStateToProps(state) {
   return {
     cart: state.cartReducer,
   };
 }
-export default connect(mapStateToProps)(CartSummary);
+export default connect(mapStateToProps,mapDispatchToProps)(CartSummary);

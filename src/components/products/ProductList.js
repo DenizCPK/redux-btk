@@ -30,7 +30,7 @@ class ProductList extends Component {
                             <th>Product Name</th>
                             <th>Unit Price</th>
                             <th>Quantity Per Unit</th>
-                            <th>Quantity In Stock</th>
+                            <th>Units In Stock</th>
                             <th></th>
 
                         </tr>
