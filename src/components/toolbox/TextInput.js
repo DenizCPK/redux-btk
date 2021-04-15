@@ -16,7 +16,7 @@ const TextInput = ({ name, label, onChange, placeHolder, value, error }) => {
           className="form-control"
           placeholder={placeHolder}
           value={value}
-          onCanPlay={onChange}
+          onChange={onChange}
         />
         {error && <div className="alert alert-danger">{error}</div>}
       </div>

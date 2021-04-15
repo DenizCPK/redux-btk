@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getCategories } from "../../redux/actions/cartActions";
-import { saveProducts } from "../../redux/actions/productActions";
+import { getCategories } from "../../redux/actions/categoryActions";
+import { saveProduct } from "../../redux/actions/productActions";
+import ProductDetail from "./ProductDetail";
 
 function AddOrUpdateProduct({
   products,
@@ -30,18 +31,23 @@ function AddOrUpdateProduct({
 
   function handleSave(event) {
     event.preventDefault();
-    saveProducts(product).then(() => {
+    saveProduct(product).then(() => {
       history.push("/");
     });
   }
 
   return (
-      
-  )
+    <ProductDetail
+      product={product}
+      categories={categories}
+      onChange={handleChange}
+      onSave={handleSave}
+    />
+  );
 }
 
-export function getProductById(product, productId) {
-  let product = products.find((product) => productId === productId) || null;
+export function getProductById(products, productId) {
+  let product = products.find((product) => product.id === productId) || null;
   return product;
 }
 
@@ -50,17 +56,17 @@ function mapStateToProps(state, ownProps) {
   const product =
     productId && state.productListReducer.lenght > 0
       ? getProductById(state.productListReducer, productId)
-      : {}
-      return {
-          product,
-          products :state.productListReducer,
-          categories:state.categoryListReducer
-      }
+      : {};
+  return {
+    product,
+    products: state.productListReducer,
+    categories: state.categoryListReducer,
+  };
 }
 
 const mapDispatchToProps = {
   getCategories,
-  saveProducts,
+  saveProduct,
 };
 
-export default connect(mapDispatchToProps,mapStateToProps)(AddOrUpdateProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(AddOrUpdateProduct);
